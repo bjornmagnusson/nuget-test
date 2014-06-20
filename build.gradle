@@ -1,0 +1,11 @@
+buildscript {
+    repositories {
+      mavenCentral()
+    }
+
+    dependencies {
+        classpath "com.ullink.gradle:gradle-nuget-plugin:1.3"
+    }
+}
+
+apply plugin:'nuget'
