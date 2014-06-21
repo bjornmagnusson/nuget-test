@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-      mavenCentral()
+		mavenCentral()
     }
 
     dependencies {
@@ -8,4 +8,21 @@ buildscript {
     }
 }
 
-apply plugin:'nuget'
+version = '0.1.0'
+
+apply plugin: 'nuget'
+
+nugetPack {
+    nuspec {
+        metadata() {
+            id archiveBaseName
+            delegate.version version
+            title 'nuget-test'
+            authors 'Björn Magnusson'
+            delegate.description '''Project description'''
+        }
+        delegate.files() {
+            delegate.file(src: 'README.md', target: 'tools')
+        }
+    }
+}
