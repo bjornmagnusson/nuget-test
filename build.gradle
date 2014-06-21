@@ -1,3 +1,5 @@
+apply plugin: 'java'
+
 buildscript {
     repositories {
 		mavenCentral()
@@ -10,19 +12,25 @@ buildscript {
 
 version = '0.1.0'
 
+jar {
+	manifest {		
+		attributes("Main-Class": "se.bjornmagnusson.nugettest.NuGetTest")
+	}
+}
+
 apply plugin: 'nuget'
 
 nugetPack {
     nuspec {
         metadata() {
-            id archiveBaseName
+            id archivesBaseName
             delegate.version version
             title 'nuget-test'
             authors 'Björn Magnusson'
             delegate.description '''Project description'''
         }
         delegate.files() {
-            delegate.file(src: 'README.md', target: 'tools')
+            delegate.file(src: "D:\\Documents\\git\\nuget-test\\README.md", target: "lib\\nuget-test")
         }
     }
 }
