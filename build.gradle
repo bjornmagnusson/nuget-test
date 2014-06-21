@@ -30,7 +30,7 @@ nugetPack {
             delegate.description '''Project description'''
         }
         delegate.files() {
-            delegate.file(src: "D:\\Documents\\git\\nuget-test\\build\\libs\\nuget-test-0.1.0.jar", target: "lib\\nuget-test")
+            delegate.file(src: jar.archivePath, target: "lib\\nuget-test")
         }
     }
 }
