@@ -2,15 +2,16 @@ apply plugin: 'java'
 
 buildscript {
     repositories {
-		mavenCentral()
+		mavenCentral()		
+		//mavenLocal()
     }
 
     dependencies {
-        classpath "com.ullink.gradle:gradle-nuget-plugin:1.3"
+        classpath "com.ullink.gradle:gradle-nuget-plugin:2.5"
     }
 }
 
-version = '0.1.0'
+version = '0.1.3'
 
 jar {
 	manifest {		
@@ -33,4 +34,9 @@ nugetPack {
             delegate.file(src: jar.archivePath, target: "lib\\nuget-test")
         }
     }
+}
+
+nugetPush {
+	serverUrl 'C:\\choco-repo'
+	nupkgFile "$buildDir/distributions/nuget-test.${project.version}.nupkg"
 }
